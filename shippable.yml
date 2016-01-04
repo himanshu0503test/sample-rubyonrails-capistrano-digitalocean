@@ -1,5 +1,9 @@
 language: ruby
 build_image: drydock/u14ruball:tip
+
+services:
+  - mysql
+
 rvm:
   - 2.0.0
   - 2.1.5
@@ -22,5 +26,3 @@ after_success:
   - ssh-add
   - cap production deploy
 
-services:
- - mysql
