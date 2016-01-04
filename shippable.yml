@@ -1,8 +1,6 @@
 language: ruby
 build_image: drydock/u12ruball:tip
 rvm:
-  - 1.8.7
-  - 1.9.3
   - 2.0.0
   - 2.1.5
   - 2.2.1
@@ -17,10 +15,12 @@ before_install:
 before_script: 
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
-  - sudo bash /etc/init.d/mysql.server start
   - mysql -e 'create database if not exists rails;'
 
 after_success:
   - eval `ssh-agent -s`
   - ssh-add
   - cap production deploy
+
+services:
+  - mysql
