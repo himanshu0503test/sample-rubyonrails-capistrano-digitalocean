@@ -17,6 +17,7 @@ before_install:
 before_script: 
   - mkdir -p shippable/testresults
   - mkdir -p shippable/codecoverage
+  - sudo bash /etc/init.d/mysql.server start
   - mysql -e 'create database if not exists rails;'
 
 after_success:
